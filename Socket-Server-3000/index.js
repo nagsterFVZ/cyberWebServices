@@ -10,9 +10,17 @@ app.get('/', function(req, res){
 io.on('connection', function(socket){
   socket.on('chat message', function(msg){
     io.emit('chat message', msg);
-    if(msg == 'pump'){
+    if(msg == 'pumpON'){
       console.log('Pump Sequence Activated');
-      pump();
+      pumpON();
+    }
+    if(msg == 'pumpOFF'){
+      console.log('Pump Sequence Activated');
+      pumpOFF();
+    }
+    if(msg == 'pumpSEQ'){
+      console.log('Pump Sequence Activated');
+      pumpSEQ();
     }
   });
 });
@@ -21,7 +29,15 @@ http.listen(port, function(){
   console.log('listening on *:' + port);
 });
 
-function pump() {
+function pumpON() {
   const spawn = require("child_process").spawn;
-  const pythonProcess = spawn('python',["./pump.py"]);
+  const pythonProcess = spawn('python',["./pumpON.py"]);
+}
+function pumpOFF() {
+  const spawn = require("child_process").spawn;
+  const pythonProcess = spawn('python',["./pumpOFF.py"]);
+}
+function pumpSEQ() {
+  const spawn = require("child_process").spawn;
+  const pythonProcess = spawn('python',["./pumpSEQ.py"]);
 }

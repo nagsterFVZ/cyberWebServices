@@ -1,0 +1,15 @@
+import RPi.GPIO as gp
+import time
+gp.setmode(gp.BCM)
+gp.setup(4,gp.OUT)
+gp.output(4,gp.LOW)
+time.sleep(3)
+gp.output(4,gp.HIGH)
+time.sleep(1)
+gp.output(4,gp.LOW)
+time.sleep(3)
+gp.output(4,gp.HIGH)
+time.sleep(1)
+gp.output(4,gp.LOW)
+time.sleep(3)
+gp.output(4,gp.HIGH)
