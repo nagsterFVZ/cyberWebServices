@@ -12,7 +12,7 @@ io.on('connection', function(socket){
     io.emit('chat message', msg);
     if(msg == 'pump'){
       console.log('Pump Sequence Activated');
-
+      pump();
     }
   });
 });
@@ -22,11 +22,6 @@ http.listen(port, function(){
 });
 
 function pump() {
-  $.ajax({
-    type: "POST",
-    url: "~/pump.py",
-    data: { param: text}
-  }).done(function( o ) {
-     // do something
-  });
+  const spawn = require("child_process").spawn;
+  const pythonProcess = spawn('python',["./pump.py"]);
 }
