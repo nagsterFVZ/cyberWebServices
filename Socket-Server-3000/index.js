@@ -10,9 +10,23 @@ app.get('/', function(req, res){
 io.on('connection', function(socket){
   socket.on('chat message', function(msg){
     io.emit('chat message', msg);
+    if(msg == 'pump'){
+      console.log('Pump Sequence Activated');
+
+    }
   });
 });
 
 http.listen(port, function(){
   console.log('listening on *:' + port);
 });
+
+function pump() {
+  $.ajax({
+    type: "POST",
+    url: "~/pump.py",
+    data: { param: text}
+  }).done(function( o ) {
+     // do something
+  });
+}
